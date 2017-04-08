@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const upload = require('multer')({ dest: './public' });
 
 const app = express();
 
@@ -25,8 +26,8 @@ class News {
 }
 
 const n1 = new News(167664819, '01.jpg', 'The Dream Factory (dir cut)', `The Fender Custom Shop has been called nirvana for guitar lovers. This year marks the 30th anniversary of the legendary shop that's built guitars for the likes of Eric Clapton, Johnny Cash, Merle Haggard, The Stones, Jimmy Page, Bob Dylan and more.
-From its inception as a "wild experiment" to current world famous status, this short documentary traces the story using never before seen archival imagery and conversations with the eight original master builders.
-Special thanks to Fender and all the master builders, past and present, for inviting us into this amazing shop.`);
+    From its inception as a "wild experiment" to current world famous status, this short documentary traces the story using never before seen archival imagery and conversations with the eight original master builders.
+    Special thanks to Fender and all the master builders, past and present, for inviting us into this amazing shop.`);
 
 const n2 = new News(180075890, '02.jpg', 'Nike - Kyle Maynard - Unlimited Will', 'Profile on the mindset of extraordinary athlete, Kyle Maynard, and his determination to surmount any challenge in his path. It’s part of Nike’s “Unlimited” campaign launched during the Rio Olympics.');
 
@@ -64,3 +65,7 @@ app.post('/edit', (req, res) => {
     news[index] = new News(id, image, title, description);
     res.redirect('/admin');
 });
+
+app.get('/upload', (req, res) => res.render('upload'));
+
+app.post('/upload', upload.single('avartar'), (req, res) => res.send('Upload file is success'));
