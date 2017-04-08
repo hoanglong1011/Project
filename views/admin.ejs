@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <table>
+            <% news.forEach((e, i) => {
+                %>
+            <tr>
+                <td><%= i + 1 %></td>
+                <td><%= e.id %></td>
+                <td><%= e.title %></td>
+                <td><%= e.description %>></td>
+                <td>
+                    <img src="./images/avartar/<%= e.image %>" width="200"/>
+                </td>
+                <td>
+                    <a href="/edit/<%= i %>">Add</a><br>
+                    <a href="/delete/<%= i %>">Remove</a>
+                </td>
+            </tr>
+                <%
+            })%>
+        </table>
+
+        <form action="/add" method="POST">
+            <input type="text" name="title" placeholder="title"/>
+            <br></br>
+            <input type="text" name="description" placeholder="description"/>
+            <br></br>
+            <input type="text" name="image" placeholder="image"/>
+            <br></br>
+            <input type="text" name="video" placeholder="video"/>
+            <br></br>
+            <button name="btn_Add">Add News</button>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <base href="../" />
+    </head>
+    <body>
+        <form action="/edit" method="POST">
+            <input type="text" name="index" value="<%= index %>" hidden="true"/>
+            <input type="text" name="title" value="<%= title %>" placeholder="title"/>
+            <br></br>
+            <input type="text" name="description" value="<%= description %>" placeholder="description"/>
+            <br></br>
+            <input type="text" name="image" value="<%= image %>" placeholder="image"/>
+            <br></br>
+            <input type="text" name="id" value="<%= id %>" placeholder="video"/>
+            <br></br>
+            <img src="images/avartar/<%= image %>" width=300/>
+            <button name="btn_Edit">Edit News</button>
+        </form>
+    </body>
+</html>
